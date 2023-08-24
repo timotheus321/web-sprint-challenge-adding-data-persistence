@@ -1,7 +1,4 @@
-// build your `Resource` model here
-const knex = require('knex');
-const config = require('../../knexfile');
-const db = knex(config.development);
+const db = require('../../data/dbConfig'); 
 
 function findResources() {
     return db('resources'); 
