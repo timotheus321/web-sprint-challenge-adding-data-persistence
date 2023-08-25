@@ -8,9 +8,9 @@ function addProject(project) {
     return db('projects').insert(project, 'project_id') 
       .then(ids => {
      
-        const project_id = ids[0].project_id; // Extract the project_id
+        const project_id = ids[0].project_id;
 
-        return findProjects().where({ project_id }).first(); // Match using project_id
+        return findProjects().where({ project_id }).first(); 
       })
       .then(newProject => {
         if (!newProject) {

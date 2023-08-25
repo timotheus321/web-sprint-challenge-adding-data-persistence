@@ -26,12 +26,16 @@ router.get('/', (req, res) => {
     const resource = req.body;
     Resources.addResource(resource)
       .then(id => {
-        res.status(201).json({ created_id: id });
+        Resources.findResourceById(id[0])
+          .then(newResource => {
+            res.status(201).json(newResource); 
+          });
       })
       .catch(err => {
         res.status(500).json({ message: 'Failed to create new resource' });
       });
   });
+  
   router.put('/:id', (req, res) => {
     const { id } = req.params;
     const resource = req.body;
